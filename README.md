@@ -12,88 +12,93 @@ This project follows a 6-phase data analysis process, from defining the objectiv
 6. **Act** — Translate the analysis into a business recommendations report, a stakeholder presentation deck, and a one-page infographic.
    
 ## 🎬 Metadata
--Table 1: salesorder
- Primary Key : SalesOrderID
- Fields :
- SalesOrderID, unique identifier for each sales order
- PatnerStoreID, unique identifier for each patner store
- SalesTeamID, unique identifier for each sales team
- OrderDate, Date of patner store's make order 
- Payment, Payment method of sales order's
- TotalOrderTransaction, Total sales order amount of	sales order's
- Note, detail or note from related person of sales order
+### Table 1: salesorder
+**Primary Key:** SalesOrderID
 
--Table 2: orderitem
- Fields : 
- SalesOrderID, unique identifier for each sales order
- ProductID, unique identifier for each prodcut
- QuantityOrder, quantity for each product in one sales order.
- ItemTotal, total quantity of sales order's
+**Fields:**
+- SalesOrderID — unique identifier for each sales order
+- PatnerStoreID — unique identifier for each partner store
+- SalesTeamID — unique identifier for each sales team
+- OrderDate — date of partner store's order
+- Payment — payment method of sales order
+- TotalOrderTransaction — total sales order amount of sales order
+- Note — detail or note from related person of sales order
 
--table 3: invoice
- Primary Key : InvoiceID
- Fields : 
- InvoiceID, unique identifier for each invoice
- SalesOrderID, unique identifier for each sales order
- ShipmentType, Shipment method of invoice's
- WarehouseLocation, Warehouse of company
- TermsofPayment, Terms of Payment of invoice's
- ShippingCost, Total ship cost of invoice's
- Taxes, taxes of invoice's
- TotalDue, Total amount that must be pay of invoice's
+### Table 2: orderitem
+**Fields:**
+- SalesOrderID — unique identifier for each sales order
+- ProductID — unique identifier for each product
+- QuantityOrder — quantity for each product in one sales order
+- ItemTotal — total quantity of sales order
 
--Table 4: patnerstore
- Primary Key : PatnerStoreID
- Fields :
- PatnerStoreID, Unique identifier for each patner store.
- PatnerStoreName, patner store's name
- PatnerType, type business scale of patner store's
- Region, region of patner store's
- Province, province of patner store's
- PatnerContactPhone, patner store's contact number
+### Table 3: invoice
+**Primary Key:** InvoiceID
 
--Table 5: product
- Primary Key : ProductID
- Fields :
- ProductID, unique identifier for each Product
- VendorID, unique identifier for each Vendor
- ProductName, name of product's
- Category, category of product's
- UnitSalesPrice, sales price for one unit of product's
- UnitBuyPrice, buy price for one unit of product's
- Quantity, Stock quantity of each product
- UOM, unit of measure of each product
- DiscountProduct, Discount of every Product
- ProductDescription, description detail of product's
+**Fields:**
+- InvoiceID — unique identifier for each invoice
+- SalesOrderID — unique identifier for each sales order
+- ShipmentType — shipment method of invoice
+- WarehouseLocation — warehouse of company
+- TermsOfPayment — terms of payment of invoice
+- ShippingCost — total ship cost of invoice
+- Taxes — taxes of invoice
+- TotalDue — total amount that must be paid on invoice
 
--Table 6: salesteam
- Primary Key : SalesTeamID
- Fields :
- SalesTeamID, unique identifier for each Sales Team
- SalesTeamName, name of sales team's
- SalesTeamRegion, region of sales team's
- SalesPromotionMethods, method of sales team's
- TotalProspect, Total Prospect of Sales for each Sales Team
+### Table 4: patnerstore
+**Primary Key:** PatnerStoreID
 
--Table 7: vendor
- Primary Key : VendorID
-	Fields :
-	VendorID, unique identifier for each Vendor
- VendorName, name of vendor's
- Address, address of vendor's
- City, city of vendor's address
- Province, province of vendor's
- Email, email of vendor's
- Phone, phone of vendor's
+**Fields:**
+- PatnerStoreID — unique identifier for each partner store
+- PatnerStoreName — partner store's name
+- PatnerType — type/business scale of partner store
+- Region — region of partner store
+- Province — province of partner store
+- PatnerContactPhone — partner store's contact number
 
-- Relationships and Constraints
- •	patnerstore.PatnerStoreID ↔ salesorder.PatnerStoreID: One-to-Many (one Patner Store can have many sales order).
- •	salesteam.SalesTeamID ↔ salesorder.SalesTeamID: One-to-Many (one Sales Team have responsibility to many sales order).
- •	vendor.VendorID ↔ product.VendorID: One-to-Many (one vendor can sell many of products).
- •	product.ProductID ↔ orderitem.ProductID: One-to-Many (one product can be listed in many order items).
- •	salesorder.SalesOrderID ↔ orderitem.SalesOrderID: One-to-Many (one sales order can be listed in many order items).
- •	salesorder.SalesOrderID ↔ invoice.SalesOrderID: One-to-Many (one sales order can be listed in many invoices).
+### Table 5: product
+**Primary Key:** ProductID
 
+**Fields:**
+- ProductID — unique identifier for each product
+- VendorID — unique identifier for each vendor
+- ProductName — name of the product
+- Category — category of the product
+- UnitSalesPrice — sales price for one unit of product
+- UnitBuyPrice — buy price for one unit of product
+- Quantity — stock quantity of each product
+- UOM — unit of measure of each product
+- DiscountProduct — discount of every product
+- ProductDescription — description detail of the product
+
+### Table 6: salesteam
+**Primary Key:** SalesTeamID
+
+**Fields:**
+- SalesTeamID — unique identifier for each sales team
+- SalesTeamName — name of the sales team
+- SalesTeamRegion — region of the sales team
+- SalesPromotionMethods — method of the sales team
+- TotalProspect — total prospect of sales for each sales team
+
+### Table 7: vendor
+**Primary Key:** VendorID
+
+**Fields:**
+- VendorID — unique identifier for each vendor
+- VendorName — name of the vendor
+- Address — address of the vendor
+- City — city of vendor's address
+- Province — province of vendor's address
+- Email — email of the vendor
+- Phone — phone of the vendor
+
+### Relationships and Constraints
+- `patnerstore.PatnerStoreID` ↔ `salesorder.PatnerStoreID`: One-to-Many (one partner store can have many sales orders)
+- `salesteam.SalesTeamID` ↔ `salesorder.SalesTeamID`: One-to-Many (one sales team is responsible for many sales orders)
+- `vendor.VendorID` ↔ `product.VendorID`: One-to-Many (one vendor can sell many products)
+- `product.ProductID` ↔ `orderitem.ProductID`: One-to-Many (one product can be listed in many order items)
+- `salesorder.SalesOrderID` ↔ `orderitem.SalesOrderID`: One-to-Many (one sales order can be listed in many order items)
+- `salesorder.SalesOrderID` ↔ `invoice.SalesOrderID`: One-to-Many (one sales order can be listed in many invoices)
 
 ## 🎬 Project Showcase
 ![Power BI Dashboard Demo](Power%20BI%20Project%20Showcase.gif)
