@@ -1,5 +1,12 @@
-# Sport Store Sales Analytics Dashboard with Power BI
-This is project that include sales analysis for Sport Brand client and visualize the data using Power BI from timeline year 2020 - 2022.
+# Sport Store Sales Analysis
+This project analyzes 3 years (2020–2022) of sales data for a sporting goods distribution business operating across Indonesia, covering 5 sales teams, 50 partner stores, and 9 product categories.
+
+## 🎬 Data Analysis Process
+
+
+## 🎬 Metadata
+
+
 
 ## 🎬 Project Showcase
 ![Power BI Dashboard Demo](Power%20BI%20Project%20Showcase.gif)
