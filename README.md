@@ -3,9 +3,96 @@ This project analyzes 3 years (2020–2022) of sales data for a sporting goods d
 
 ## 🎬 Data Analysis Process
 
-
+This project follows a 6-phase data analysis process, from defining the objective to delivering business recommendations:
+1. **Ask** — Define the objective of the analysis: understand where sales revenue is coming from, where it's slipping, and what business questions need answering.
+2. **Prepare** — Extract the raw sales data using SQL, pulling from the sales order, order item, invoice, product, partner store, and sales team tables.
+3. **Process** — Clean and structure the extracted data using Excel, handling inconsistencies, duplicates, and formatting issues to make it analysis-ready.
+4. **Analyze** — Analyze the cleaned data using pivot tables to uncover trends in revenue, product/category performance, partner store behavior, and regional sales team performance.
+5. **Share** — Visualize the findings in an interactive Power BI dashboard, covering KPIs, trends, and seasonality.
+6. **Act** — Translate the analysis into a business recommendations report, a stakeholder presentation deck, and a one-page infographic.
+   
 ## 🎬 Metadata
+-Table 1: salesorder
+ Primary Key : SalesOrderID
+ Fields :
+ SalesOrderID, unique identifier for each sales order
+ PatnerStoreID, unique identifier for each patner store
+ SalesTeamID, unique identifier for each sales team
+ OrderDate, Date of patner store's make order 
+ Payment, Payment method of sales order's
+ TotalOrderTransaction, Total sales order amount of	sales order's
+ Note, detail or note from related person of sales order
 
+-Table 2: orderitem
+ Fields : 
+ SalesOrderID, unique identifier for each sales order
+ ProductID, unique identifier for each prodcut
+ QuantityOrder, quantity for each product in one sales order.
+ ItemTotal, total quantity of sales order's
+
+-table 3: invoice
+ Primary Key : InvoiceID
+ Fields : 
+ InvoiceID, unique identifier for each invoice
+ SalesOrderID, unique identifier for each sales order
+ ShipmentType, Shipment method of invoice's
+ WarehouseLocation, Warehouse of company
+ TermsofPayment, Terms of Payment of invoice's
+ ShippingCost, Total ship cost of invoice's
+ Taxes, taxes of invoice's
+ TotalDue, Total amount that must be pay of invoice's
+
+-Table 4: patnerstore
+ Primary Key : PatnerStoreID
+ Fields :
+ PatnerStoreID, Unique identifier for each patner store.
+ PatnerStoreName, patner store's name
+ PatnerType, type business scale of patner store's
+ Region, region of patner store's
+ Province, province of patner store's
+ PatnerContactPhone, patner store's contact number
+
+-Table 5: product
+ Primary Key : ProductID
+ Fields :
+ ProductID, unique identifier for each Product
+ VendorID, unique identifier for each Vendor
+ ProductName, name of product's
+ Category, category of product's
+ UnitSalesPrice, sales price for one unit of product's
+ UnitBuyPrice, buy price for one unit of product's
+ Quantity, Stock quantity of each product
+ UOM, unit of measure of each product
+ DiscountProduct, Discount of every Product
+ ProductDescription, description detail of product's
+
+-Table 6: salesteam
+ Primary Key : SalesTeamID
+ Fields :
+ SalesTeamID, unique identifier for each Sales Team
+ SalesTeamName, name of sales team's
+ SalesTeamRegion, region of sales team's
+ SalesPromotionMethods, method of sales team's
+ TotalProspect, Total Prospect of Sales for each Sales Team
+
+-Table 7: vendor
+ Primary Key : VendorID
+	Fields :
+	VendorID, unique identifier for each Vendor
+ VendorName, name of vendor's
+ Address, address of vendor's
+ City, city of vendor's address
+ Province, province of vendor's
+ Email, email of vendor's
+ Phone, phone of vendor's
+
+-Relationships and Constraints
+ •	patnerstore.PatnerStoreID ↔ salesorder.PatnerStoreID: One-to-Many (one Patner Store can have many sales order).
+ •	salesteam.SalesTeamID ↔ salesorder.SalesTeamID: One-to-Many (one Sales Team have responsibility to many sales order).
+ •	vendor.VendorID ↔ product.VendorID: One-to-Many (one vendor can sell many of products).
+ •	product.ProductID ↔ orderitem.ProductID: One-to-Many (one product can be listed in many order items).
+ •	salesorder.SalesOrderID ↔ orderitem.SalesOrderID: One-to-Many (one sales order can be listed in many order items).
+ •	salesorder.SalesOrderID ↔ invoice.SalesOrderID: One-to-Many (one sales order can be listed in many invoices).
 
 
 ## 🎬 Project Showcase
